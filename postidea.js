@@ -1,31 +1,21 @@
-import "mongoose"
 
-mongoose.connect("mongodb+srv://mongoadmin:mongoadmin@cluster0.exxx1cv.mongodb.net/sathvik?retryWrites=true&w=majority")
-
-mongoose.connection.once("open" ,()=>{
-  console.log("connected!");
-  startserver()
-}).on("error",()=>{
-  console.log("database error");
-})
-
-
-async function uploadidea(){
-        alert('your idea is submitted!')
+async function uploadidea(event){
+    event.preventDefault()
+        alert('your idea is being submitted!')
 let username = document.getElementById("username").value
 let domainsstring = document.getElementById("domains").innerText
 let idea = document.getElementById("idea").innerText
         let data = {domains,idea,username}
-        console.log(data);
+        console.log("sending this to the backend : " + data);
+
+let resp = await fetch ("/api/uploadidea",{method : "POST" , headers :{
+    "Content-Type" : "application/json"
+},
+body : JSON.stringify(data)})
+
+console.log("recieved response of " + await resp.body );
 
 
-   domainsstring = domainsstring.split(" ")
-
-domainsstring.forEach(async element => {
-  
-  await mongoose.connection.collection("ideas").insertOne({ "domain" : element , "idea" : data.idea } )
-});
-
-window.location.href="home"
+window.location.href="index.html"
 
       }

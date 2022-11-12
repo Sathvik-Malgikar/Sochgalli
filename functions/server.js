@@ -3,6 +3,7 @@ const static = require("express-static")
 const path = require("path")
 const bodyparser = require("body-parser")
 const mongoose = require("mongoose")
+const serverless = require("serverless-http")
 
 mongoose.connect("mongodb+srv://mongoadmin:mongoadmin@cluster0.exxx1cv.mongodb.net/sathvik?retryWrites=true&w=majority")
 
@@ -39,9 +40,9 @@ function startserver(){
     resp.sendFile("browse.html" , {root : "./public"} )
   })
   
-  app.get("/uploadidea",async (req,resp)=>{
-  console.log(req.query);
-  let data = req.query
+  app.post("/uploadidea",async (req,resp)=>{
+  // console.log(req.body);
+  let data = req.body
 
 
   let domains = data.domains.split(" ")
@@ -53,10 +54,12 @@ domains.forEach(async element => {
 
   
   // resp.send("your idea is submitted !")
-  resp.redirect("home")
+  // resp.redirect("home")
   })
   
   app.use((req,resp)=>{
   resp.redirect("home")
   })
 }
+
+module.exports.handler = serverless(app)
