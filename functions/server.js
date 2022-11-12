@@ -41,7 +41,7 @@ function startserver(){
   })
   
   app.post("/uploadidea",async (req,resp)=>{
-  // console.log(req.body);
+  console.log(req.body);
   let data = req.body
 
 
