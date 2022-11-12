@@ -8,7 +8,7 @@ let idea = document.getElementById("idea").innerText
         let data = {domains,idea,username}
         console.log("sending this to the backend : " + data);
 
-let resp = await fetch ("/api/uploadidea",{method : "POST" , headers :{
+let resp = await fetch ("https://luxury-swan-e805f9.netlify.app/.netlify/functions/uploadidea",{method : "POST" , headers :{
     "Content-Type" : "application/json"
 },
 body : JSON.stringify(data)})

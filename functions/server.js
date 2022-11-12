@@ -40,7 +40,7 @@ function startserver(){
     resp.sendFile("browse.html" , {root : "./public"} )
   })
   
-  app.post("/uploadidea",async (req,resp)=>{
+  app.post("uploadidea",async (req,resp)=>{
   console.log(req.body);
   let data = req.body
 
@@ -58,7 +58,8 @@ domains.forEach(async element => {
   })
   
   app.use((req,resp)=>{
-  resp.redirect("home")
+  // resp.redirect("home")
+  console.log("last use accessed");
   })
 }
 
