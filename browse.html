@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas from people around the world, for you</title>
+    <link rel="icon" href="favicon.png">
+</head>
+<link rel="stylesheet" href="base.css">
+<style>
+    #search {
+        width: 250px;
+        height: 50px;
+    }
+</style>
+<body>
+    <nav>
+        <span><img width="56px" src="bagbulb.png" alt="logo"></span>
+        <span id="title" ><a class="homebtn" href="index.html"><b>Sochgalli.</b></a></span>
+    </nav>
+    <br>
+    <h1>A place for buying and selling ideas.</h1>
+    <br><br>
+    <label for="search" id="search">
+
+        <input id="searchbox" type="search" >
+    </label>
+    <button onclick="getideas()">find ideas</button>
+    <div id="contents" >
+
+    </div>
+    <script>
+        async function getideas(){
+let domain = document.getElementById('searchbox')
+domain = domain.value
+      
+let resp = await fetch("http://getideasindomain",{method : "POST" , body : JSON.stringify(domain) , headers :{
+    "Content-type" : "applcation/json"
+}})
+
+        }
+    </script>
+</body>
+</html>

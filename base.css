@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(209, 250, 250);
+}
+nav {
+    background-color: blueviolet;
+    height: 70px;
+    position: sticky;
+    color: white;
+    flex-direction: row;
+    display: flex;
+    padding: 20px;
+}
+nav>* {
+    padding-left: 20px;
+}
+#title {
+    font-size: xx-large;
+}
+h1 {
+    text-align: center;
+}
+.homebtn {
+    color: aliceblue;
+    text-decoration : none ;
+}

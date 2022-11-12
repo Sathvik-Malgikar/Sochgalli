@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png">
+    <title>Sochgalli</title>
+    <link rel="stylesheet" href="btncss.css">
+</head>
+<link rel="stylesheet" href="base.css">
+<style>
+#btncontainer>* {
+    left: 25%;
+    padding: 50px;
+    margin: 50px;
+}
+
+</style>
+<body>
+    <nav>
+        <span><img width="56px" src="bagbulb.png" alt="logo"></span>
+        <span id="title" ><a class="homebtn" onclick="redirect(index)"><b>Sochgalli.</b></a></span>
+    </nav>
+    <br>
+    <h1>A place for buying and selling ideas.</h1>
+    <br><br>
+    <div id="btncontainer">
+
+        <button class="button-78" onclick="redirect('postidea')" >
+            I have ideas to post.
+        </button>
+        <button class="button-78"  onclick="redirect('browse')" >
+            I am looking for ideas.
+        </button>
+    </div>
+</body>
+<script>
+    function redirect(page) {
+        window.location.href = page+".html"
+    }
+</script>
+</html>

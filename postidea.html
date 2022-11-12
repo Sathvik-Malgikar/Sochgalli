@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post your idea</title>
+    <link rel="icon" href="favicon.png">
+</head>
+<script>
+   mongoose.connect("mongodb+srv://mongoadmin:mongoadmin@cluster0.exxx1cv.mongodb.net/sathvik?retryWrites=true&w=majority")
+
+mongoose.connection.once("open" ,()=>{
+  console.log("connected!");
+  startserver()
+}).on("error",()=>{
+  console.log("database error");
+})
+
+</script>
+<link rel="stylesheet" href="base.css">
+<style>
+    form {
+        font-size: larger;
+    }
+</style>
+<body>
+    <nav>
+        <span><img width="56px" src="bagbulb.png" alt="logo"></span>
+        <span id="title" ><a class="homebtn" href="home"><b>Sochgalli.</b></a></span>
+    </nav>
+    <br>
+    <h1>A place for buying and selling ideas.</h1>
+    <br><br>
+    <form action="">
+        Name : <br>
+        <input type="text" name="username" id="username" ><br>
+        your idea here : <br>
+        <textarea name="idea" id="idea" cols="30" rows="10"></textarea>
+        <textarea name="domains" id="domains" cols="30" rows="10"></textarea>
+        <button type="submit" onclick="uploadidea()" >upload idea</button>
+    </form>
+    <script>
+
+   
+
+      async function uploadidea(){
+        alert('your idea is submitted!')
+let username = document.getElementById("username").value
+let domainsstring = document.getElementById("domains").innerText
+let idea = document.getElementById("idea").innerText
+        let data = {domains,idea,username}
+        console.log(data);
+
+
+   domainsstring = domainsstring.split(" ")
+
+domainsstring.forEach(async element => {
+  
+  await mongoose.connection.collection("ideas").insertOne({ "domain" : element , "idea" : data.idea } )
+});
+
+window.location.href="home"
+
+      }
+    </script>
+</body>
+</html>
