@@ -16,6 +16,6 @@ body : JSON.stringify(data)})
 console.log("recieved response of " + await resp.body );
 
 
-window.location.href="index.html"
+// window.location.href="index.html"
 
       }
